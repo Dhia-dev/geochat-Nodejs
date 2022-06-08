@@ -1,22 +1,19 @@
-var  mongoose = require('mongoose');
+const mongoose = require('mongoose')
+  
+  var express = require('express')
+  const url = "mongodb+srv://ala:172839654@cluster0.ia5kj.mongodb.net/?retryWrites=true&w=majority";
+  
+  const connectionParams={
+      useNewUrlParser: true,
+      useUnifiedTopology: true 
+  }
+  mongoose.connect(url,connectionParams)
+      .then( () => {
+          console.log('Connected to the database ')
+      })
+      .catch( (err) => {
+          console.error(`Error connnecting the tha data base. n${err} `);
+      })
 
-var express = require('express')
 
-
-
-mongoose.connect("mongodb://localhost/TechNewsDataBase2",{
-
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-
-});
-
-const con = mongoose.connection
-
-con.on('open',function(){
-
-    console.log('connected ...')
-    
-    
-    })
-
+      const URI = process.env.MONGODB_URL;
